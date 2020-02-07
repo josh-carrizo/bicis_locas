@@ -14,19 +14,27 @@ function validateForm(){
 			return;
 		}
 	*/
+function remover(elemnt){
+	var span = elemnt.parentNode.children[2];
+		if(!span) {return};
+			elemnt.parentNode.removeChild(span);
+	}
+
 	var name = document.getElementById('name');
 		if(name.value.length == 0){
 			var span_name=document.createElement('span');
 			span_name.innerHTML='Debe ingresar un nombre';
 			name.parentNode.appendChild(span_name);
-		} else if (!name.value.match(/^[a-zA-Z]+$/)){
+		}else if (!name.value.match(/^[a-zA-Z]+$/)){
 			var span_name_letras=document.createElement('span');
 			span_name_letras.innerHTML='Debe ingresar solo letras';
 			name.parentNode.appendChild(span_name_letras);
 		}else if (name.value[0] != name.value[0].toUpperCase()){
 			var span_name=document.createElement('span');
-			span_name.innerHTML='El nombre debe comenzar en minúsculas';
+			span_name.innerHTML='El nombre debe comenzar en MAYÚSCULA';
 			name.parentNode.appendChild(span_name);
+		} else{
+			remover(name);
 		}
 /*
 	var Aplld = document.getElementById('lastname').value;
@@ -51,15 +59,19 @@ function validateForm(){
 			var span=document.createElement('span');
 			span.innerHTML=mensaje;
 			elem.parentNode.appendChild(span);
+
 		}
 
 		var lastname = document.getElementById('lastname');
 		if(lastname.value.length == 0){
 			alertar('Debe ingresar un Apellido', lastname);
-		} else if (!lastname.value.match(/^[a-zA-Z]+$/)){
+		}  
+		else if (!lastname.value.match(/^[a-zA-Z]+$/)){
 			alertar('Debe ingresar solo letras',lastname);
 		}else if (lastname.value[0] != lastname.value[0].toUpperCase()){
-			alertar('El apellido debe comenzar en minúsculas',lastname);
+			alertar('El apellido debe comenzar en MAYÚSCULA',lastname);
+		} else{
+			remover(lastname);
 		}
 
 /*
@@ -76,8 +88,9 @@ function validateForm(){
 		if(email.value.length == ""){
 			alertar('Es necesario completar el campo Email',email);
 		} else if (!email.value.match(/^\w+@\w+\.\w+$/)){
-			console.log('error de mail')
 			alertar('El campo email debe tener un formato válido Ej: name@domain.com',email);
+		}else{
+			remover(email);
 		}
 	/*
 	var pssw = document.getElementById('input-password').value;
@@ -102,6 +115,8 @@ function validateForm(){
 			alertar('La contraseña debe ser distinto a password , 123456 o 098754',password);
 		}else if (password.value.length <=6){
 			alertar('La contraseña debe tener al menos 6 caracteres',password);
+		}else{
+			remover(password);
 		}
 
 	
