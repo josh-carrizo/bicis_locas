@@ -14,11 +14,22 @@ function validateForm(){
 			return;
 		}
 	*/
-function remover(elemnt){
-	var span = elemnt.parentNode.children[2];
-		if(!span) {return};
+		//FUNCIONES
+	function alertar(mensaje, elem){
+		var span = elem.parentNode.children[2];
+		if (!span){ //si pan no existe, entonces lo creo
+			var span=document.createElement('span');
+		}
+		span.innerHTML=mensaje;
+		elem.parentNode.appendChild(span);
+	}	
+	function remover(elemnt){
+		var span = elemnt.parentNode.children[2];
+			if(!span) {
+				return;
+			}
 			elemnt.parentNode.removeChild(span);
-	}
+		}
 
 	var name = document.getElementById('name');
 	if(name.value.length == 0){
@@ -50,14 +61,6 @@ function remover(elemnt){
 
 		// PARA EVITAR REPETIR SIEMPRE LO MISMO CREAMOS UNA FUNCION
 
-		function alertar(mensaje, elem){
-			var span = elem.parentNode.children[2];
-			if (!span){
-				var span=document.createElement('span');
-			}
-			span.innerHTML=mensaje;
-			elem.parentNode.appendChild(span);
-		}
 
 		var lastname = document.getElementById('lastname');
 		if(lastname.value.length == 0){
