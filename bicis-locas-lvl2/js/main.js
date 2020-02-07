@@ -14,7 +14,7 @@ function validateForm(){
 			return;
 		}
 
-		var Aplld = document.getElementById('lastname').value;
+	var Aplld = document.getElementById('lastname').value;
 		if (Aplld == ""){
 		alert("Es necesario completar el campo Apellido");
 		return;
