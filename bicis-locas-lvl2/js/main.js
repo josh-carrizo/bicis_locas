@@ -21,21 +21,16 @@ function remover(elemnt){
 	}
 
 	var name = document.getElementById('name');
-		if(name.value.length == 0){
-			var span_name=document.createElement('span');
-			span_name.innerHTML='Debe ingresar un nombre';
-			name.parentNode.appendChild(span_name);
-		}else if (!name.value.match(/^[a-zA-Z]+$/)){
-			var span_name_letras=document.createElement('span');
-			span_name_letras.innerHTML='Debe ingresar solo letras';
-			name.parentNode.appendChild(span_name_letras);
-		}else if (name.value[0] != name.value[0].toUpperCase()){
-			var span_name=document.createElement('span');
-			span_name.innerHTML='El nombre debe comenzar en MAYÚSCULA';
-			name.parentNode.appendChild(span_name);
-		} else{
-			remover(name);
-		}
+	if(name.value.length == 0){
+		alertar('Debe ingresar un Apellido', name);
+	}  
+	else if (!name.value.match(/^[a-zA-Z]+$/)){
+		alertar('Debe ingresar solo letras',name);
+	}else if (name.value[0] != name.value[0].toUpperCase()){
+		alertar('El apellido debe comenzar en MAYÚSCULA',name);
+	} else{
+		remover(name);
+	}
 /*
 	var Aplld = document.getElementById('lastname').value;
 		if (Aplld == ""){
@@ -56,10 +51,12 @@ function remover(elemnt){
 		// PARA EVITAR REPETIR SIEMPRE LO MISMO CREAMOS UNA FUNCION
 
 		function alertar(mensaje, elem){
-			var span=document.createElement('span');
+			var span = elem.parentNode.children[2];
+			if (!span){
+				var span=document.createElement('span');
+			}
 			span.innerHTML=mensaje;
 			elem.parentNode.appendChild(span);
-
 		}
 
 		var lastname = document.getElementById('lastname');
