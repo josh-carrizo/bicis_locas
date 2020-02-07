@@ -5,26 +5,26 @@ function validateForm(){
 		alert('Es necesario completar el campo Nombre');
 		return;
 		}
-		if (nmbr != nmbr.match(/^[a-z A-Z]+$/)){
+		if (!nmbr.match(/^[a-zA-Z]+$/)){
 			alert('El nombre debe ser solo con letras');
 			return;
 		}
-		if (nmbr[0] != nmbr.toUpperCase()){
-			alert('La primera letra debe ser en Mayúscula');
+		if (nmbr[0] != nmbr[0].toUpperCase()){	
+			alert('La primera letra de tu nombre debe ser en Mayúscula');
 			return;
 		}
 
-	var Aplld = document.getElementById('lastname').value;
+		var Aplld = document.getElementById('lastname').value;
 		if (Aplld == ""){
 		alert("Es necesario completar el campo Apellido");
 		return;
 		}
-		if (Aplld != Aplld.match(/^[a-z A-Z]+$/)){
+		if (!Aplld.match(/^[a-zA-Z]+$/)){
 			alert('El Apellido debe ser solo con letras');
 			return;
 		}
-		if (Aplld[0] != Aplld.toUpperCase()){
-			alert('La primera letra debe ser en Mayúscula');
+		if (Aplld[0] != Aplld[0].toUpperCase()){
+			alert('La primera letra de tu apellido debe ser en Mayúscula');
 			return;
 		}
 
@@ -33,6 +33,9 @@ function validateForm(){
 		if (eml == ""){
 		alert("Es necesario completar el campo Email");
 		return;
+		}
+		if(eml.match(/^\w+ @ \w+ \.\w+$/)){
+			alert('El campo email debe tener un formato válido. Ej: name@domain.com');
 		}
 
 	var pssw = document.getElementById('input-password').value;
@@ -49,6 +52,13 @@ function validateForm(){
 		alert("La contraseña debe tener al menos 6 caracteres");
 		return;
 		}
+	
+	var selec=document.getElementsByTagName('select')[0].value;
+		if(selec == 0) {
+			alert('Debe seleccionar un tipo de bici');
+			return;
+		}
 
+		
 
 }
